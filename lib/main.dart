@@ -5,6 +5,8 @@ import 'package:menstrual_record/pages/menstrual_birthday/menstrual_birthday_bin
 import 'package:menstrual_record/pages/menstrual_birthday/menstrual_birthday_view.dart';
 import 'package:menstrual_record/pages/menstrual_first/menstrual_first_binding.dart';
 import 'package:menstrual_record/pages/menstrual_first/menstrual_first_view.dart';
+import 'package:menstrual_record/pages/menstrual_guess/menstrual_guess_binding.dart';
+import 'package:menstrual_record/pages/menstrual_guess/menstrual_guess_view.dart';
 import 'package:menstrual_record/pages/menstrual_pregnant/menstrual_pregnant_binding.dart';
 import 'package:menstrual_record/pages/menstrual_pregnant/menstrual_pregnant_view.dart';
 import 'package:menstrual_record/pages/menstrual_second/menstrual_second_binding.dart';
@@ -16,6 +18,8 @@ import 'package:menstrual_record/pages/menstrual_tab/menstrual_tab_view.dart';
 import 'package:menstrual_record/pages/no_network/no_network_binding.dart';
 import 'package:menstrual_record/pages/no_network/no_network_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'db_menstrual/db_guess.dart';
 
 Color primaryColor = const Color(0xffff5a8d);
 Color bgColor = const Color(0xffffedf3);
@@ -37,7 +41,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: Jings,
-      initialRoute: select ? '/tab' : '/birthday',
+      initialRoute:'/',
       theme: ThemeData(
         useMaterial3: true,
         primaryColor: primaryColor,
@@ -90,11 +94,13 @@ class MyApp extends StatelessWidget {
   }
 }
 List<GetPage<dynamic>> Jings = [
+  GetPage(name: '/', page: () => const MenstrualGuessView(), binding: MenstrualGuessBinding()),
   GetPage(name: '/uninit', page: () => NoNetworkPage(), binding: NoNetworkBinding()),
   GetPage(name: '/tab', page: () => MenstrualTabPage(), binding: MenstrualTabBinding()),
   GetPage(name: '/select', page: () => MenstrualSelectPage(), binding: MenstrualSelectBinding()),
   GetPage(name: '/first', page: () => MenstrualFirstPage(), binding: MenstrualFirstBinding()),
   GetPage(name: '/second', page: () => MenstrualSecondPage(), binding: MenstrualSecondBinding()),
+  GetPage(name: '/guess', page: () => const DbGuess()),
   GetPage(name: '/pregnant', page: () => MenstrualPregnantPage(), binding: MenstrualPregnantBinding()),
   GetPage(name: '/birthday', page: () => MenstrualBirthdayPage(), binding: MenstrualBirthdayBinding()),
 ];

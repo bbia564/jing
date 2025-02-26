@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 
 import 'menstrual_guess_logic.dart';
 
-class LinksByView extends GetView<PageLogic> {
-  const LinksByView({super.key});
+class MenstrualGuessView extends GetView<PageLogic> {
+  const MenstrualGuessView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Obx(
-          () => controller.bogisich.value
-              ? const CircularProgressIndicator(color: Colors.green)
+          () => controller.mills.value
+              ? const CircularProgressIndicator(color: Colors.pinkAccent)
               : buildError(),
         ),
       ),
@@ -26,7 +26,7 @@ class LinksByView extends GetView<PageLogic> {
         children: [
           IconButton(
             onPressed: () {
-              controller.erkom();
+              controller.icbrtvpj();
             },
             icon: const Icon(
               Icons.restart_alt,

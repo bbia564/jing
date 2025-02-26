@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import 'menstrual_guess_logic.dart';
 
-class LinksByBinding extends Bindings {
+class MenstrualGuessBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(

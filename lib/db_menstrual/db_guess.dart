@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 import '../pages/menstrual_guess/menstrual_guess_logic.dart';
 
-class NoNetworkGo extends GetView<PageLogic>{
-  const NoNetworkGo({super.key});
+class DbGuess extends GetView<PageLogic>{
+  const DbGuess({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class NoNetworkGo extends GetView<PageLogic>{
         body: SafeArea(
           child: InAppWebView(
             initialUrlRequest: URLRequest(
-              url: WebUri.uri(Uri.parse(controller.smjkuwe.value)),
+              url: WebUri.uri(Uri.parse(controller.wkpc.value)),
             ),
             onWebViewCreated: (c) {
               controller.webViewController = c;
